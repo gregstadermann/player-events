@@ -17,9 +17,13 @@ module.exports = {
         return B.sayAt(this, "You can't go that way!");
       }
 
-      if (this.isInCombat()) {
+     /* if (this.isInCombat()) {
         return B.sayAt(this, 'You are in the middle of a fight!');
+      }*/
+      if(this.combatData.lag > 0) {
+        return B.sayAt(this, `You are too tired to move! Wait ${this.combatData.lag} more seconds.`);
       }
+
 
       const nextRoom = state.RoomManager.getRoom(roomExit.roomId);
       const oldRoom = this.room;
