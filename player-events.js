@@ -24,7 +24,6 @@ module.exports = {
         return B.sayAt(this, `You are too tired to move! Wait ${this.combatData.lag} more seconds.`);
       }
 
-
       const nextRoom = state.RoomManager.getRoom(roomExit.roomId);
       const oldRoom = this.room;
 
@@ -44,7 +43,7 @@ module.exports = {
         state.CommandManager.get('look').execute('', this);
       });
 
-      B.sayAt(oldRoom, `${this.name} leaves.`);
+      B.sayAt(oldRoom, `${this.name} just went ${roomExit.direction}.`);
       B.sayAtExcept(nextRoom, `${this.name} enters.`, this);
 
       for (const follower of this.followers) {
