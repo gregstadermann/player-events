@@ -44,7 +44,7 @@ module.exports = {
       });
 
       B.sayAt(oldRoom, `${this.name} just went ${roomExit.direction}.`);
-      B.sayAtExcept(nextRoom, `${this.name} enters.`, this);
+      B.sayAtExcept(nextRoom, `${this.name} just arrived.`, this);
 
       for (const follower of this.followers) {
         if (follower.room !== oldRoom) {
