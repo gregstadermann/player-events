@@ -97,14 +97,14 @@ module.exports = {
 
     /**
      * Handle player gaining experience
-     * @param {number} amount Exp gained
+     * @param state
      */
     experience: state => function (amount) {
       // Don't announce experience gain
-      //B.sayAt(this, `<blue>You gained <bold>${amount}</bold> experience!</blue>`);
+      B.sayAt(this, `<blue>You gained <bold>${amount}</bold> experience!</blue>`);
 
-      const totalTnl = LevelUtil.expToLevel(this.level + 1);
-
+      const totalTnl = LevelUtil.expToLevel(this.level + 1, this.level);
+      console.log('Player.expericne - Amount - Total TNL:', this.experience, amount, totalTnl);
       // level up, currently wraps experience if they gain more than needed for multiple levels
       if (this.experience + amount > totalTnl) {
         B.sayAt(this, '                                   <bold><blue>!You have gained a level!</blue></bold>');
@@ -115,7 +115,7 @@ module.exports = {
           amount = (this.experience + amount) - nextTnl;
           this.level++;
           this.experience = 0;
-          nextTnl = LevelUtil.expToLevel(this.level + 1);
+          nextTnl = LevelUtil.expToLevel(this.level + 1, this.level);
           B.sayAt(this, `<blue>You are now level <bold>${this.level}</bold>!</blue>`);
           this.emit('level');
         }
