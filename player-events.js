@@ -104,7 +104,7 @@ module.exports = {
       B.sayAt(this, `<blue>You gained <bold>${amount}</bold> experience!</blue>`);
 
       const totalTnl = LevelUtil.expToLevel(this.level + 1, this.level);
-      console.log('Player.expericne - Amount - Total TNL:', this.experience, amount, totalTnl);
+      console.log('Player.experience - Amount - Total TNL:', this.experience, amount, totalTnl);
       // level up, currently wraps experience if they gain more than needed for multiple levels
       if (this.experience + amount > totalTnl) {
         B.sayAt(this, '                                   <bold><blue>!You have gained a level!</blue></bold>');
